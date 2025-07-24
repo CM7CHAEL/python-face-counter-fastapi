@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Celulares</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        h1 { font-size: 3em; color: #333; }
+        #contador { font-size: 5em; color: #ff0000; }
+    </style>
+</head>
+<body>
+    <h1>📱 Contador de Celulares</h1>
+    <p>Total detectados:</p>
+    <p id="contador">0</p>
+
+    <script>
+        var contadorElemento = document.getElementById("contador");
+        var ws = new WebSocket("ws://" + window.location.host + "/ws");
+
+        ws.onmessage = function(event) {
+            contadorElemento.innerText = event.data;
+        };
+    </script>
+</body>
+</html>
